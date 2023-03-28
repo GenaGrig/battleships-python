@@ -1,5 +1,9 @@
 import random
 
+class GameBoard:
+    def __init__(self, board):
+        self.board = board
+
 LENGTH_OF_SHIPS = [2,3,3,4,5]
 PLAYER_BOARD = [[' '] * 8 for i in range(8)]
 COMPUTER_BOARD = [[' '] * 8 for i in range(8)]
@@ -31,7 +35,7 @@ def place_ships(board):
             if board == COMPUTER_BOARD:
                 orientation, row, column = random.choice(['H', 'V']), random.randint(0,7), random.randint(0,7)
                 if check_ship_fit(ship_length, row, column, orientation):
-                    if ship_overlaps(board, row, column, orientation, ship_length) == False:
+                    if check_ship_overlaps(board, row, column, orientation, ship_length) == False:
                         if orientation == "H":
                             for i in range(column, column + ship_length):
                                 board[row][i] = "X"
@@ -44,7 +48,7 @@ def place_ships(board):
                 print('Place the ship with a length of ' + str(ship_length))
                 row, column, orientation = user_input(place_ship)
                 if check_ship_fit(ship_length, row, column, orientation):
-                    if ship_overlaps(board, row, column, orientation, ship_length) == False:
+                    if check_ship_overlaps(board, row, column, orientation, ship_length) == False:
                         if orientation == "H":
                             for i in range(column, column + ship_length):
                                 board[row][i] = "X"
@@ -108,7 +112,7 @@ def user_input(place_ship):
     else:
         while True:
             try:
-                row = input("Enter the row 1-8 to place the ship at: ")
+                row = input("Enter the row 1-8 to shoot: ")
                 if row in "12345678":
                     row = int(row) - 1
                     break
@@ -116,7 +120,7 @@ def user_input(place_ship):
                 print("Please enter a valid number 1-8")
         while True:
             try:
-                column = input("Enter the column A-H to place the ship at: ").upper()
+                column = input("Enter the column A-H to shoot: ").upper()
                 if column in "ABCDEFGH":
                     column = LETTERS_TO_NUMBERS[column]
                     break
@@ -126,7 +130,7 @@ def user_input(place_ship):
 
     
 
-def count_hit_ships():
+def count_hit_ships(board):
     count = 0
     for row in board:
         for column in row:
@@ -165,7 +169,8 @@ place_ships(PLAYER_BOARD)
 while True:
     #player turn
     while True:
-        print('Guess a battleship location')
+        print("Welcome to Battleships game!")
+        print('Guess a battleship location, shoot!')
         print_board(PLAYER_GUESS_BOARD)
         turn(PLAYER_GUESS_BOARD)
         break
