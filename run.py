@@ -1,9 +1,5 @@
 import random
 
-class GameBoard:
-    def __init__(self, board):
-        self.board = board
-
 LENGTH_OF_SHIPS = [2,3,3,4,5]
 PLAYER_BOARD = [[' '] * 8 for i in range(8)]
 COMPUTER_BOARD = [[' '] * 8 for i in range(8)]
