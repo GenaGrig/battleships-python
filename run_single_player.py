@@ -42,15 +42,15 @@ class Battleship:
 
     def get_user_input(self):
         try:
-            x_row = input("Enter the row of the ship: ")
+            x_row = input("Enter the row of the board: ")
             while x_row not in "12345678":
-                print('Not an appropriate choice, please select a valid row')
-                x_row = input("Enter the row of the ship: ")
+                print('Not an appropriate choice, please select a valid row number')
+                x_row = input("Enter the row of the board: ")
 
-            y_column = input("Enter the column of the ship: ").upper()
+            y_column = input("Enter the column of the board: ").upper()
             while y_column not in "ABCDEFGH":
-                print('Not an appropriate choice, please select a valid column')
-                y_column = input("Enter the column of the ship: ").upper()
+                print('Not an appropriate choice, please select a valid column letter')
+                y_column = input("Enter the column of the board: ").upper()
             return int(x_row) - 1, GameBoard.letters_to_numbers()[y_column]
         except ValueError and KeyError:
             print("Not a valid input")
