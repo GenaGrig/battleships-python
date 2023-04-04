@@ -18,7 +18,6 @@ LETTERS_TO_NUMBERS = {
 
 def print_board(board):
     print("  A B C D E F G H")
-    #print("  +-+-+-+-+-+-+-+")
     row_number = 1
     for row in board:
         print("%d|%s|" % (row_number, "|".join(row)))
@@ -158,7 +157,7 @@ def turn(board):
 
 
 place_ships(COMPUTER_BOARD)
-print_board(COMPUTER_BOARD)
+#print_board(COMPUTER_GUESS_BOARD)
 print_board(PLAYER_BOARD)
 place_ships(PLAYER_BOARD)
 
@@ -166,7 +165,7 @@ while True:
     #player turn
     while True:
         print("Welcome to Battleships game!")
-        print('Guess a battleship location, shoot!')
+        print('Guess a battleship location, shoot!\n')
         print_board(PLAYER_GUESS_BOARD)
         turn(PLAYER_GUESS_BOARD)
         break
@@ -175,6 +174,7 @@ while True:
         break
     #computer turn
     while True:
+        print("Computer shoots at you!\n")
         turn(COMPUTER_GUESS_BOARD)
         break
     print_board(COMPUTER_GUESS_BOARD)
