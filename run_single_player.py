@@ -20,7 +20,6 @@ class GameBoard:
 
     def print_board(self):
         print("  A B C D E F G H")
-        #print("  +-+-+-+-+-+-+-+")
         row_number = 1
         for row in self.board:
             print("%d|%s|" % (row_number, "|".join(row)))

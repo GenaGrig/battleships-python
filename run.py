@@ -1,6 +1,6 @@
 import random
 
-LENGTH_OF_SHIPS = [2,3,3,4,5]
+LENGTH_OF_SHIPS = [1,2,3,4,5]
 PLAYER_BOARD = [[' '] * 8 for i in range(8)]
 COMPUTER_BOARD = [[' '] * 8 for i in range(8)]
 PLAYER_GUESS_BOARD = [[' '] * 8 for i in range(8)]
@@ -141,8 +141,10 @@ def turn(board):
         elif board[row][column] == "X":
             turn(board)
         elif COMPUTER_BOARD[row][column] == "X":
+            print("Bang! You've got a hit on enemy battleship!\n")
             board[row][column] = "X"
         else:
+            print('Ooops! You missed! Reload!\n')
             board[row][column] = "-"
     else:
         row, column = random.randint(0,7), random.randint(0,7)
@@ -151,8 +153,10 @@ def turn(board):
         elif board[row][column] == "X":
             turn(board)
         elif PLAYER_BOARD[row][column] == "X":
+            print('AI has hit on your battleship!\n')
             board[row][column] = "X"
         else:
+            print('AI has missed!\n')
             board[row][column] = "-"
 
 
@@ -174,7 +178,7 @@ while True:
         break
     #computer turn
     while True:
-        print("Computer shoots at you!\n")
+        print("Computer shoots on you!\n")
         turn(COMPUTER_GUESS_BOARD)
         break
     print_board(COMPUTER_GUESS_BOARD)
